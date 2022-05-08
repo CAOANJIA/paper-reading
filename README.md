@@ -8,7 +8,7 @@
 
 ## Show and Tell(ensemble)
 
-Vinyals, Oriol, et al. "Show and tell: A neural image caption generator." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2015. [[pdf]([Show and Tell: A Neural Image Caption Generator (cv-foundation.org)](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Vinyals_Show_and_Tell_2015_CVPR_paper.pdf))]
+Vinyals, Oriol, et al. "Show and tell: A neural image caption generator." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2015. [[pdf](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Vinyals_Show_and_Tell_2015_CVPR_paper.pdf)]
 
 1. 用预训练CNN, Inceptionv3
 2. LSTM输入只有第一个cell接受了图像编码；`word embedding`和`hiddensize`都是512d；SGD
