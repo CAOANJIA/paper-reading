@@ -8,7 +8,7 @@
 
 ## Show and Tell(ensemble)
 
-Vinyals, Oriol, et al. "Show and tell: A neural image caption generator." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2015. [pdf]([Show and Tell: A Neural Image Caption Generator (cv-foundation.org)](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Vinyals_Show_and_Tell_2015_CVPR_paper.pdf))
+Vinyals, Oriol, et al. "Show and tell: A neural image caption generator." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2015. [[pdf]([Show and Tell: A Neural Image Caption Generator (cv-foundation.org)](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Vinyals_Show_and_Tell_2015_CVPR_paper.pdf))]
 
 1. 用预训练CNN, Inceptionv3
 2. LSTM输入只有第一个cell接受了图像编码；`word embedding`和`hiddensize`都是512d；SGD
@@ -26,7 +26,7 @@ Vinyals, Oriol, et al. "Show and tell: A neural image caption generator." *Proce
 
 ## Show, Attend and Tell
 
-Xu, Kelvin, et al. "Show, attend and tell: Neural image caption generation with visual attention." *International conference on machine learning*. PMLR, 2015. [pdf]([Show, Attend and Tell: Neural Image CaptionGeneration with Visual Attention (mlr.press)](http://proceedings.mlr.press/v37/xuc15.pdf))
+Xu, Kelvin, et al. "Show, attend and tell: Neural image caption generation with visual attention." *International conference on machine learning*. PMLR, 2015. [[pdf](http://proceedings.mlr.press/v37/xuc15.pdf)]
 
 1. VGG19
 2. LSTM输入每一个cell都考虑了zt，即attend之后的图像编码，zt的计算也要用到ht-1
@@ -50,7 +50,7 @@ trick--每次选相同长度的作为一个batch，加快训练速度;
 
 ## SCA-CNN
 
-Chen, Long, et al. "Sca-cnn: Spatial and channel-wise attention in convolutional networks for image captioning." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2017. [pdf]([SCA-CNN: Spatial and Channel-Wise Attention in Convolutional Networks for Image Captioning (thecvf.com)](https://openaccess.thecvf.com/content_cvpr_2017/papers/Chen_SCA-CNN_Spatial_and_CVPR_2017_paper.pdf))
+Chen, Long, et al. "Sca-cnn: Spatial and channel-wise attention in convolutional networks for image captioning." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2017. [[pdf](https://openaccess.thecvf.com/content_cvpr_2017/papers/Chen_SCA-CNN_Spatial_and_CVPR_2017_paper.pdf)]
 
 1. CNN: `VGG19`/ `Res-152`	`LSTM`: word-embedding 100d, hidden-state 1000d	Attention Space: 512d both	
 2. `spatial` + `channel-wise` + `multi-layer`，多层迭代，层内是先channel再spatial
@@ -74,7 +74,7 @@ trick--beamsearch结合lengthnorm效果更好，引用别人的结论；
 
 ## Meshed-Memory-Transformer
 
-Cornia, Marcella, et al. "Meshed-memory transformer for image captioning." *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*. 2020. [pdf]([Meshed-Memory Transformer for Image Captioning (thecvf.com)](https://openaccess.thecvf.com/content_CVPR_2020/papers/Cornia_Meshed-Memory_Transformer_for_Image_Captioning_CVPR_2020_paper.pdf))
+Cornia, Marcella, et al. "Meshed-memory transformer for image captioning." *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*. 2020. [[pdf](https://openaccess.thecvf.com/content_CVPR_2020/papers/Cornia_Meshed-Memory_Transformer_for_Image_Captioning_CVPR_2020_paper.pdf)]
 
 1. `multi-layer encoder`  +  `multi-layer decoder`, 每个layer内部是类transformer结构（multihead-self-attention + addnorm），但是加上了先验记忆向量
 2. mesh结构，并且每条边都有权重
@@ -89,7 +89,7 @@ Cornia, Marcella, et al. "Meshed-memory transformer for image captioning." *Proc
 
 ## ClipCap
 
-Mokady, Ron, Amir Hertz, and Amit H. Bermano. "Clipcap: Clip prefix for image captioning." *arXiv preprint arXiv:2111.09734* (2021). [pdf](https://arxiv.org/pdf/2111.09734.pdf)
+Mokady, Ron, Amir Hertz, and Amit H. Bermano. "Clipcap: Clip prefix for image captioning." *arXiv preprint arXiv:2111.09734* (2021). [[pdf](https://arxiv.org/pdf/2111.09734.pdf)]
 
 1. `CLIP` + `Mapping Network` + `GPT2`（轻量级）
 
@@ -142,7 +142,7 @@ Mokady, Ron, Amir Hertz, and Amit H. Bermano. "Clipcap: Clip prefix for image ca
 
 ## VSR(Verb-specific Semantic Roles)
 
-Chen, Long, et al. "Human-like controllable image captioning with verb-specific semantic roles." *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*. 2021. [pdf]([Human-Like Controllable Image Captioning With Verb-Specific Semantic Roles (thecvf.com)](https://openaccess.thecvf.com/content/CVPR2021/papers/Chen_Human-Like_Controllable_Image_Captioning_With_Verb-Specific_Semantic_Roles_CVPR_2021_paper.pdf))
+Chen, Long, et al. "Human-like controllable image captioning with verb-specific semantic roles." *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*. 2021. [[pdf]([Human-Like Controllable Image Captioning With Verb-Specific Semantic Roles (thecvf.com)](https://openaccess.thecvf.com/content/CVPR2021/papers/Chen_Human-Like_Controllable_Image_Captioning_With_Verb-Specific_Semantic_Roles_CVPR_2021_paper.pdf))]
 
 1. *"human-like"*的控制信号需要满足：
 
