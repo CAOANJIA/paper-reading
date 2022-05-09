@@ -28,6 +28,8 @@ Vinyals, Oriol, et al. "Show and tell: A neural image caption generator." *Proce
 
 Xu, Kelvin, et al. "Show, attend and tell: Neural image caption generation with visual attention." *International conference on machine learning*. PMLR, 2015. [[pdf](http://proceedings.mlr.press/v37/xuc15.pdf)]
 
+[PyTorch实现](https://github.com/CAOANJIA/show-attend-and-tell)
+
 1. VGG19
 2. LSTM输入每一个cell都考虑了zt，即attend之后的图像编码，zt的计算也要用到ht-1
 3. hard: REINFORCE; soft: SGD
