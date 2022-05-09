@@ -168,7 +168,7 @@ Chen, Long, et al. "Human-like controllable image captioning with verb-specific 
 5. 数据集：*COCO、Flickr30k*
 
 6. $$
-   VSR = \{v, <s_1, n_1>, ..., <s_m, n_m>\
+   VSR = \{v, <s_1, n_1>, ..., <s_m, n_m>\}
    $$
 
    其中，*v*代表动词，*s*i代表语义角色，*n*i代表其实体的数量
