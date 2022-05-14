@@ -24,11 +24,9 @@ Vinyals, Oriol, et al. "Show and tell: A neural image caption generator." *Proce
 
 
 
-## Show, Attend and Tell
+## Show, Attend and Tell [[PyTorch实现](https://github.com/CAOANJIA/show-attend-and-tell)]
 
 Xu, Kelvin, et al. "Show, attend and tell: Neural image caption generation with visual attention." *International conference on machine learning*. PMLR, 2015. [[pdf](http://proceedings.mlr.press/v37/xuc15.pdf)]
-
-[PyTorch实现](https://github.com/CAOANJIA/show-attend-and-tell)
 
 1. VGG19
 2. LSTM输入每一个cell都考虑了zt，即attend之后的图像编码，zt的计算也要用到ht-1
@@ -181,10 +179,15 @@ Chen, Long, et al. "Human-like controllable image captioning with verb-specific 
 
 8. 建模：
    $$
-   p(y|I,VSR)=p(y|pattern)p(pattern|I,VSR)
+   p(y|I,VSR) &=& p(y|pattern)p(pattern|I,VSR)\\
+              &=& p(y|S,R)p(S,R|\tilde{R},VSR)p(\tilde{R}|I,VSR)
    $$
    其中，*pattern*的作用是，先构建一个描述性的模式，然后完成细节的描述
-
-9. 
-
    
+   下面三个概率分别对应captioner、SSP、GSRL
+   
+   
+   
+   
+
+## 1
