@@ -1,12 +1,12 @@
-# Image Caption Paper Reading
+# Paper Reading
 
 [TOC]
 
-个人对NIC的论文阅读笔记，具体格式并不规范，仅供参考
+个人论文阅读笔记
 
-持续更新
+## Image Caption
 
-## Show and Tell(ensemble)
+### Show and Tell(ensemble)
 
 Vinyals, Oriol, et al. "Show and tell: A neural image caption generator." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2015. [[pdf](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Vinyals_Show_and_Tell_2015_CVPR_paper.pdf)]
 
@@ -24,7 +24,7 @@ Vinyals, Oriol, et al. "Show and tell: A neural image caption generator." *Proce
 
 
 
-## Show, Attend and Tell [[PyTorch实现](https://github.com/CAOANJIA/show-attend-and-tell)]
+### Show, Attend and Tell [[PyTorch实现](https://github.com/CAOANJIA/show-attend-and-tell)]
 
 Xu, Kelvin, et al. "Show, attend and tell: Neural image caption generation with visual attention." *International conference on machine learning*. PMLR, 2015. [[pdf](http://proceedings.mlr.press/v37/xuc15.pdf)]
 
@@ -48,7 +48,7 @@ trick--每次选相同长度的作为一个batch，加快训练速度;
 
 
 
-## SCA-CNN
+### SCA-CNN
 
 Chen, Long, et al. "Sca-cnn: Spatial and channel-wise attention in convolutional networks for image captioning." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2017. [[pdf](https://openaccess.thecvf.com/content_cvpr_2017/papers/Chen_SCA-CNN_Spatial_and_CVPR_2017_paper.pdf)]
 
@@ -72,7 +72,7 @@ trick--beamsearch结合lengthnorm效果更好，引用别人的结论；
 
 
 
-## Meshed-Memory-Transformer
+### Meshed-Memory-Transformer
 
 Cornia, Marcella, et al. "Meshed-memory transformer for image captioning." *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*. 2020. [[pdf](https://openaccess.thecvf.com/content_CVPR_2020/papers/Cornia_Meshed-Memory_Transformer_for_Image_Captioning_CVPR_2020_paper.pdf)]
 
@@ -87,7 +87,7 @@ Cornia, Marcella, et al. "Meshed-memory transformer for image captioning." *Proc
 
 
 
-## ClipCap
+### ClipCap
 
 Mokady, Ron, Amir Hertz, and Amit H. Bermano. "Clipcap: Clip prefix for image captioning." *arXiv preprint arXiv:2111.09734* (2021). [[pdf](https://arxiv.org/pdf/2111.09734.pdf)]
 
@@ -140,7 +140,7 @@ Mokady, Ron, Amir Hertz, and Amit H. Bermano. "Clipcap: Clip prefix for image ca
 
    
 
-## VSR(Verb-specific Semantic Roles)
+### VSR(Verb-specific Semantic Roles)
 
 Chen, Long, et al. "Human-like controllable image captioning with verb-specific semantic roles." *Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition*. 2021. [[pdf]([Human-Like Controllable Image Captioning With Verb-Specific Semantic Roles (thecvf.com)](https://openaccess.thecvf.com/content/CVPR2021/papers/Chen_Human-Like_Controllable_Image_Captioning_With_Verb-Specific_Semantic_Roles_CVPR_2021_paper.pdf))]
 
@@ -190,4 +190,65 @@ Chen, Long, et al. "Human-like controllable image captioning with verb-specific 
    
    
 
-## 1
+## GAN
+
+### GAN
+
+Goodfellow, Ian, et al. "Generative adversarial nets." *Advances in neural information processing systems* 27 (2014). [[pdf]([Generative Adversarial Nets (neurips.cc)](https://proceedings.neurips.cc/paper/2014/file/5ca3e9b122f61f8f06494c97b1afccf3-Paper.pdf))]
+
+
+
+
+
+### DCGAN
+
+Radford, Alec, Luke Metz, and Soumith Chintala. "Unsupervised representation learning with deep convolutional generative adversarial networks." *arXiv preprint arXiv:1511.06434* (2015). [[pdf]([1511.06434.pdf%C3 (arxiv.org)](https://arxiv.org/pdf/1511.06434.pdf%C3))]
+
+
+
+
+
+### CycleGAN
+
+Zhu, Jun-Yan, et al. "Unpaired image-to-image translation using cycle-consistent adversarial networks." *Proceedings of the IEEE international conference on computer vision*. 2017. [[pdf]([Unpaired Image-To-Image Translation Using Cycle-Consistent Adversarial Networks (thecvf.com)](https://openaccess.thecvf.com/content_ICCV_2017/papers/Zhu_Unpaired_Image-To-Image_Translation_ICCV_2017_paper.pdf))]
+
+
+
+
+
+### CartoonGAN
+
+Chen, Yang, Yu-Kun Lai, and Yong-Jin Liu. "Cartoongan: Generative adversarial networks for photo cartoonization." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2018. [[pdf]([CartoonGAN: Generative Adversarial Networks for Photo Cartoonization (thecvf.com)](https://openaccess.thecvf.com/content_cvpr_2018/papers/Chen_CartoonGAN_Generative_Adversarial_CVPR_2018_paper.pdf))]
+
+
+
+
+
+### AnimeGAN
+
+Chen, Jie, Gang Liu, and Xin Chen. "AnimeGAN: A novel lightweight gan for photo animation." *International Symposium on Intelligence Computation and Applications*. Springer, Singapore, 2019. [[pdf]([AnimeGAN: A Novel Lightweight GAN for Photo Animation | SpringerLink](https://link.springer.com/chapter/10.1007/978-981-15-5577-0_18))]
+
+
+
+
+
+### StyleGAN
+
+Karras, Tero, Samuli Laine, and Timo Aila. "A style-based generator architecture for generative adversarial networks." *Proceedings of the IEEE/CVF conference on computer vision and pattern recognition*. 2019. [[pdf]([A Style-Based Generator Architecture for Generative Adversarial Networks (thecvf.com)](https://openaccess.thecvf.com/content_CVPR_2019/papers/Karras_A_Style-Based_Generator_Architecture_for_Generative_Adversarial_Networks_CVPR_2019_paper.pdf))]
+
+
+
+
+
+### StyleGANv2
+
+Karras, Tero, et al. "Analyzing and improving the image quality of stylegan." *Proceedings of the IEEE/CVF conference on computer vision and pattern recognition*. 2020. [[pdf](https://openaccess.thecvf.com/content_CVPR_2020/papers/Karras_Analyzing_and_Improving_the_Image_Quality_of_StyleGAN_CVPR_2020_paper.pdf)]
+
+
+
+
+
+### StyleCLIP
+
+Patashnik, Or, et al. "Styleclip: Text-driven manipulation of stylegan imagery." *Proceedings of the IEEE/CVF International Conference on Computer Vision*. 2021. [[pdf](https://openaccess.thecvf.com/content/ICCV2021/papers/Patashnik_StyleCLIP_Text-Driven_Manipulation_of_StyleGAN_Imagery_ICCV_2021_paper.pdf)]
+
