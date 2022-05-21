@@ -4,6 +4,70 @@
 
 个人论文阅读笔记
 
+## Transformer
+
+### Transformer
+
+Vaswani, Ashish, et al. "Attention is all you need." *Advances in neural information processing systems* 30 (2017). [[pdf](https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf)]
+
+1. 纯靠注意力机制实现，抛弃了 RNN 和 CNN ，并行化程度高
+2. 整个transformer架构是以 堆叠的自注意力层 和 point-wise的FC构成
+3. Encoder：
+   - 6层
+   - 每层都有2个子层：multi-head self-attention + position-wise FC
+   - 且子层之间：residual + layer norm
+   - 输出512维
+4. Decoder：
+   - 相对于Encoder，加了一层交互层，也是multi-head attention
+   - mask操作，只看到前面时间步的部分，实现自回归
+5. Scaled Dot-Product Attention：
+   - 和additional attention比较，两者理论上复杂度相似，但是实际应用中sdpa更快，节省空间，因为是框架处理过的矩阵乘法
+   - scaled原因是值太大的时候，softmax梯度太小
+6. multi-head：
+   - 多头分别得到结果，有不同侧重点，最后concat一起并过一个linear
+   - 因为输出512维，用8个头的话 q 和 k 的维度都是512 / 8  = 64
+7. 交互层：
+   - Q来自decoder的上一个子层
+   - K 和 V 来自encoder的输出
+   - 因此，Q查询了输入序列的所有位置
+8. Encoder可以使每个位置都被每个位置关注，Decoder也是，不过是mask的基础上
+9. position-wise FC：
+   - 两层FC，可以表示为 512 -> 2048 + ReLU -> 512
+10. 两个embedding层和pre-softmax-linear层的权重共享
+11. positional encoding：
+    - 因为没有递归和卷积，所以要加入序列信息
+    - 直接相加 encoding 和 embedding ，可以解释为不同频率的信息叠加
+12. 自注意力的原因：
+    - 减小每层的总计算复杂度
+    - 增加可并行化计算量
+    - 去除长程依赖问题带来的影响
+
+
+
+
+
+### BERT
+
+Devlin, Jacob, et al. "Bert: Pre-training of deep bidirectional transformers for language understanding." *arXiv preprint arXiv:1810.04805* (2018). [[pdf](https://arxiv.org/pdf/1810.04805.pdf&usg=ALkJrhhzxlCL6yTht2BRmH9atgvKFxHsxQ)]
+
+
+
+### Vit
+
+Dosovitskiy, Alexey, et al. "An image is worth 16x16 words: Transformers for image recognition at scale." *arXiv preprint arXiv:2010.11929* (2020). [[pdf](https://arxiv.org/pdf/2010.11929.pdf?ref=https://githubhelp.com)]
+
+### Swin Transformer
+
+Liu, Ze, et al. "Swin transformer: Hierarchical vision transformer using shifted windows." *Proceedings of the IEEE/CVF International Conference on Computer Vision*. 2021. [[pdf](https://openaccess.thecvf.com/content/ICCV2021/papers/Liu_Swin_Transformer_Hierarchical_Vision_Transformer_Using_Shifted_Windows_ICCV_2021_paper.pdf)]
+
+### ViLT
+
+Kim, Wonjae, Bokyung Son, and Ildoo Kim. "Vilt: Vision-and-language transformer without convolution or region supervision." *International Conference on Machine Learning*. PMLR, 2021. [[pdf](http://proceedings.mlr.press/v139/kim21k/kim21k.pdf)]
+
+
+
+
+
 ## Image Caption
 
 ### Show and Tell(ensemble)
