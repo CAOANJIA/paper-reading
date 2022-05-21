@@ -1,6 +1,28 @@
 # Paper Reading
 
-[TOC]
+* [Paper Reading](#paper-reading)
+  * [Transformer](#transformer)
+    * [Transformer](#transformer-1)
+    * [BERT](#bert)
+    * [Vit](#vit)
+    * [Swin Transformer](#swin-transformer)
+    * [ViLT](#vilt)
+  * [Image Caption](#image-caption)
+    * [Show and Tell(ensemble)](#show-and-tellensemble)
+    * [Show, Attend and Tell [<a href="https://github\.com/CAOANJIA/show\-attend\-and\-tell">PyTorch实现</a>]](#show-attend-and-tell-pytorch实现)
+    * [SCA\-CNN](#sca-cnn)
+    * [Meshed\-Memory\-Transformer](#meshed-memory-transformer)
+    * [ClipCap](#clipcap)
+    * [VSR(Verb\-specific Semantic Roles)](#vsrverb-specific-semantic-roles)
+  * [GAN](#gan)
+    * [GAN](#gan-1)
+    * [DCGAN](#dcgan)
+    * [CycleGAN](#cyclegan)
+    * [CartoonGAN](#cartoongan)
+    * [AnimeGAN](#animegan)
+    * [StyleGAN](#stylegan)
+    * [StyleGANv2](#styleganv2)
+    * [StyleCLIP](#styleclip)
 
 个人论文阅读笔记
 
