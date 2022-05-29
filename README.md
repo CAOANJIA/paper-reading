@@ -287,13 +287,31 @@ Chen, Long, et al. "Human-like controllable image captioning with verb-specific 
 
 Zheng, Ce, et al. "Deep learning-based human pose estimation: A survey." *arXiv preprint arXiv:2012.13392* (2020). [[pdf](https://arxiv.org/pdf/2012.13392.pdf)]
 
-1. 人体姿态估计的目的：定位人体关键部位 + 构建人体表征。
+1. Abstract
 
-2. 2D单人HPE已经获得高性能，当前关注于复杂场景的多人高遮挡场景的2D HPE；而3D HPE则挑战较大，单目图像的挑战是 ''depth ambiguities'' 深度歧义，多视图设置下的关键问题是 "viewpoints association" 视点关联。
+   人体姿态估计的目的：定位人体关键部位 + 构建人体表征。
+
+2. Intro
+
+   2D单人HPE已经获得高性能，当前关注于复杂场景的多人高遮挡场景的2D HPE；而3D HPE则挑战较大，单目图像的挑战是 ''`depth ambiguities`'' 深度歧义，多视图设置下的关键问题是 "`viewpoints association`" 视点关联。
 
    ![](https://github.com/CAOANJIA/paper-reading/blob/master/img/taxonomy-of-hpe.png)
 
-3. 
+3. 人体建模
+
+   大多数使用 `N-joints rigid kinematic model` 。
+
+   三种建模方法：
+
+   - 运动学模型 kinematic model (2D/3D)，使用一组关节位置和肢体方向来表示人体结构，优点是灵活的图表示，缺点是表示纹理和新装信息的能力有限，PSM是被广泛使用的图模型。
+   - 平面模型 planar model (2D)，用近似于人体轮廓的矩形，来表示身体部位，广泛用于PCA捕获整个人体图形和剪影变形。
+   - 体积模型 volumetric model (3D)，SMPL 皮肤多人线性模型是 3D HPE 广泛采用的模型，可以用表现出软组织动力学的自然姿态依赖变形进行建模。
+
+4. 2D HPE
+
+   2D HPE方法估计人体关键点的二维位置或者空间位置。
+
+5. 
 
 ## GAN
 
