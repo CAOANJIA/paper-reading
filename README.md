@@ -24,7 +24,11 @@
     * [StyleGANv2](#styleganv2)
     * [StyleCLIP](#styleclip)
 
-个人论文阅读笔记
+
+
+**个人论文阅读笔记**
+
+
 
 ## Transformer
 
@@ -44,7 +48,7 @@ Vaswani, Ashish, et al. "Attention is all you need." *Advances in neural informa
    - mask操作，只看到前面时间步的部分，实现自回归
 5. Scaled Dot-Product Attention：
    - 和additional attention比较，两者理论上复杂度相似，但是实际应用中sdpa更快，节省空间，因为是框架处理过的矩阵乘法
-   - scaled原因是值太大的时候，softmax梯度太小
+   - scaled原因是点积的数量级（方差）太大的时候，softmax梯度太小
 6. multi-head：
    - 多头分别得到结果，有不同侧重点，最后concat一起并过一个linear
    - 因为输出512维，用8个头的话 q 和 k 的维度都是512 / 8  = 64
@@ -274,7 +278,22 @@ Chen, Long, et al. "Human-like controllable image captioning with verb-specific 
    
    
    
-   
+
+
+
+## Human Pose Estimation
+
+### Deep Learning-Based Human Pose Estimation: A Survey
+
+Zheng, Ce, et al. "Deep learning-based human pose estimation: A survey." *arXiv preprint arXiv:2012.13392* (2020). [[pdf](https://arxiv.org/pdf/2012.13392.pdf)]
+
+1. 人体姿态估计的目的：定位人体关键部位 + 构建人体表征。
+
+2. 2D单人HPE已经获得高性能，当前关注于复杂场景的多人高遮挡场景的2D HPE；而3D HPE则挑战较大，单目图像的挑战是 ''depth ambiguities'' 深度歧义，多视图设置下的关键问题是 "viewpoints association" 视点关联。
+
+   ![](http://github.com/CAOANJIA/paper-reading/img/taxonomy of hpe.png)
+
+3. 
 
 ## GAN
 
