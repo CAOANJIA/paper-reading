@@ -4,16 +4,18 @@
   * [Transformer](#transformer)
     * [Transformer](#transformer-1)
     * [BERT](#bert)
-    * [Vit](#vit)
+    * [ViT](#vit)
     * [Swin Transformer](#swin-transformer)
     * [ViLT](#vilt)
   * [Image Caption](#image-caption)
-    * [Show and Tell](#show-and-tellensemble)
-    * [Show, Attend and Tell ](#show-attend-and-tell-pytorch实现)
+    * [Show and Tell(ensemble)](#show-and-tellensemble)
+    * [Show, Attend and Tell [<a href="https://github\.com/CAOANJIA/image\-caption">PyTorch实现</a>]](#show-attend-and-tell-pytorch实现)
     * [SCA\-CNN](#sca-cnn)
     * [Meshed\-Memory\-Transformer](#meshed-memory-transformer)
     * [ClipCap](#clipcap)
     * [VSR(Verb\-specific Semantic Roles)](#vsrverb-specific-semantic-roles)
+  * [Human Pose Estimation](#human-pose-estimation)
+    * [Deep Learning\-Based Human Pose Estimation: A Survey](#deep-learning-based-human-pose-estimation-a-survey)
   * [GAN](#gan)
     * [GAN](#gan-1)
     * [DCGAN](#dcgan)
@@ -78,7 +80,7 @@ Devlin, Jacob, et al. "Bert: Pre-training of deep bidirectional transformers for
 
 
 
-### Vit
+### ViT
 
 Dosovitskiy, Alexey, et al. "An image is worth 16x16 words: Transformers for image recognition at scale." *arXiv preprint arXiv:2010.11929* (2020). [[pdf](https://arxiv.org/pdf/2010.11929.pdf?ref=https://githubhelp.com)]
 
