@@ -291,9 +291,7 @@ Zheng, Ce, et al. "Deep learning-based human pose estimation: A survey." *arXiv 
 
 2. 2D单人HPE已经获得高性能，当前关注于复杂场景的多人高遮挡场景的2D HPE；而3D HPE则挑战较大，单目图像的挑战是 ''depth ambiguities'' 深度歧义，多视图设置下的关键问题是 "viewpoints association" 视点关联。
 
-   ![](https://github.com/CAOANJIA/paper-reading/blob/master/img/taxonomy of hpe.png)
-
-   ![image-20220529225437850](C:\Users\u'sho'p\AppData\Roaming\Typora\typora-user-images\image-20220529225437850.png)
+   ![](https://github.com/CAOANJIA/paper-reading/blob/master/img/taxonomy-of-hpe.png)
 
 3. 
 
