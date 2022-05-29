@@ -293,6 +293,8 @@ Zheng, Ce, et al. "Deep learning-based human pose estimation: A survey." *arXiv 
 
    ![](https://github.com/CAOANJIA/paper-reading/blob/master/img/taxonomy of hpe.png)
 
+   ![image-20220529225437850](C:\Users\u'sho'p\AppData\Roaming\Typora\typora-user-images\image-20220529225437850.png)
+
 3. 
 
 ## GAN
