@@ -9,7 +9,7 @@
     * [ViLT](#vilt)
   * [Image Caption](#image-caption)
     * [Show and Tell(ensemble)](#show-and-tellensemble)
-    * [Show, Attend and Tell [<a href="https://github\.com/CAOANJIA/image\-caption">PyTorch实现</a>]](#show-attend-and-tell-pytorch实现)
+    * [Show, Attend and Tell](#show-attend-and-tell)
     * [SCA\-CNN](#sca-cnn)
     * [Meshed\-Memory\-Transformer](#meshed-memory-transformer)
     * [ClipCap](#clipcap)
@@ -116,9 +116,11 @@ Vinyals, Oriol, et al. "Show and tell: A neural image caption generator." *Proce
 
 
 
-### Show, Attend and Tell [[PyTorch实现](https://github.com/CAOANJIA/image-caption)]
+### Show, Attend and Tell
 
 Xu, Kelvin, et al. "Show, attend and tell: Neural image caption generation with visual attention." *International conference on machine learning*. PMLR, 2015. [[pdf](http://proceedings.mlr.press/v37/xuc15.pdf)]
+
+[[PyTorch实现](https://github.com/CAOANJIA/image-caption)]
 
 1. VGG19
 2. LSTM输入每一个cell都考虑了zt，即attend之后的图像编码，zt的计算也要用到ht-1
