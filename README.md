@@ -44,7 +44,7 @@ Vaswani, Ashish, et al. "Attention is all you need." *Advances in neural informa
 
 - 整个transformer架构是以 堆叠的自注意力层 和 point-wise的FC构成
 
-   <img src="img/transformer.png" alt="transformer" style="zoom: 25%;" />
+   <img src="img/transformer.png" alt="transformer" style="zoom: 33%;" />
 
 - Encoder：
    - 6层
