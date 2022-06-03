@@ -38,39 +38,127 @@
 
 Vaswani, Ashish, et al. "Attention is all you need." *Advances in neural information processing systems* 30 (2017). [[pdf](https://proceedings.neurips.cc/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf)]
 
-1. 纯靠注意力机制实现，抛弃了 RNN 和 CNN ，并行化程度高
-2. 整个transformer架构是以 堆叠的自注意力层 和 point-wise的FC构成
-3. Encoder：
+#### 论文解读
+
+- 纯靠注意力机制实现，抛弃了 RNN 和 CNN ，并行化程度高
+
+- 整个transformer架构是以 堆叠的自注意力层 和 point-wise的FC构成
+
+- Encoder：
    - 6层
    - 每层都有2个子层：multi-head self-attention + position-wise FC
    - 且子层之间：residual + layer norm
    - 输出512维
-4. Decoder：
+
+- Decoder：
    - 相对于Encoder，加了一层交互层，也是multi-head attention
    - mask操作，只看到前面时间步的部分，实现自回归
-5. Scaled Dot-Product Attention：
+
+- Scaled Dot-Product Attention：
    - 和additional attention比较，两者理论上复杂度相似，但是实际应用中sdpa更快，节省空间，因为是框架处理过的矩阵乘法
    - scaled原因是点积的数量级（方差）太大的时候，softmax梯度太小
-6. multi-head：
+
+- multi-head：
    - 多头分别得到结果，有不同侧重点，最后concat一起并过一个linear
    - 因为输出512维，用8个头的话 q 和 k 的维度都是512 / 8  = 64
-7. 交互层：
+
+- 交互层：
    - Q来自decoder的上一个子层
    - K 和 V 来自encoder的输出
    - 因此，Q查询了输入序列的所有位置
-8. Encoder可以使每个位置都被每个位置关注，Decoder也是，不过是mask的基础上
-9. position-wise FC：
+
+- Encoder可以使每个位置都被每个位置关注，Decoder也是，不过是mask的基础上
+
+- position-wise FC：
    - 两层FC，可以表示为 512 -> 2048 + ReLU -> 512
-10. 两个embedding层和pre-softmax-linear层的权重共享
-11. positional encoding：
-    - 因为没有递归和卷积，所以要加入序列信息
-    - 直接相加 encoding 和 embedding ，可以解释为不同频率的信息叠加
-12. 自注意力的原因：
-    - 减小每层的总计算复杂度
-    - 增加可并行化计算量
-    - 去除长程依赖问题带来的影响
 
+- 两个embedding层和pre-softmax-linear层的权重共享
 
+- positional encoding：
+  - 因为没有递归和卷积，所以要加入序列信息
+  - 直接相加 encoding 和 embedding ，可以解释为不同频率的信息叠加
+
+- 自注意力的原因：
+  - 减小每层的总计算复杂度
+
+  - 增加可并行化计算量
+
+  - 去除长程依赖问题带来的影响
+
+    
+
+#### **个人理解**
+
+- token之间的**相似度**越高，那么关系越接近，更应该关注对方。
+
+  
+
+- 发挥attention作用的关键就是**加权**。
+
+  
+
+- 优点
+
+  - 最关键的是：有**捕获长期依赖**的能力，即容易学到**全局的信息**，因为token两两之间都算了attention。
+
+- 缺点
+
+  - **计算量大**，因此如何**减少计算、加速推理**（比如不用全局信息）可以研究。
+
+    
+
+- 为何多头，多头后为何要降维？
+
+  - 相当于CNN的核数量，有**不同的侧重点**，学到更丰富的信息。
+
+  - 将高维空间转换到低维空间，使得**concat后仍然满足维度dk**，丰富特征信息。
+
+    
+
+- 为什么Q、K、V都要通过一个Linear？
+
+  - 可以实现**在不同空间进行投影**，增强泛化能力。
+
+  - 和加法相比，复杂度差不多。
+
+    
+
+- 为什么scaled，为什么维度开根号？
+
+  - 如果softmax内计算的数数量级太大，会输出近似**one-hot**编码的形式，导致**梯度消失**的问题，所以需要scale。
+
+  - 为什么需要用维度开根号，假设向量q，k满足各分量独立同分布，均值为0，方差为1，那么qk点积均值为0，方差为dk，从统计学计算，若果让qk点积的**方差控制在1**，需要将其除以dk的平方根，使得softmax更加平滑。
+
+    
+
+- 为什么LayNorm而不是BN？
+
+  - **LayNorm**：对一个序列的不同特征维度进行Norm。
+
+  - **BatchNorm**：对batch进行Norm。
+
+  - CV使用BN是认为channel维度的信息对cv方面有重要意义，如果对channel维度也归一化会造成不同通道信息一定的损失。而同理nlp领域认为**句子长度不一致**，并且**各个batch的信息没什么关系**，因此只考虑句子内信息的归一化，也就是LN。
+
+    
+
+- decoder并行化训练如何实现？
+
+  - **mask**。
+
+  - 推理的时候不能并行。
+
+    
+
+- 非线性体现在哪？
+
+  - self attention 用了 **softmax** ，非线性。
+  - FFN 中用了 **ReLU** 。
+
+- 1
+
+- 1
+
+- 
 
 
 
