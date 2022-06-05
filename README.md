@@ -46,48 +46,56 @@ Vaswani, Ashish, et al. "Attention is all you need." *Advances in neural informa
 
    <img src="img/transformer.png" alt="transformer" style="zoom: 33%;" />
 
-- Encoder：
+- **Encoder**：
+   
    - 6层
-   - 每层都有2个子层：multi-head self-attention + position-wise FC
-   - 且子层之间：residual + layer norm
+   - 每层都有2个子层：**multi-head self-attention** + **position-wise FC**
+   - 且子层之间：**residual** + **LayerNorm**
    - 输出512维
+   
+- **Decoder**：
 
-- Decoder：
-   - 相对于Encoder，加了一层交互层，也是multi-head attention
-   - mask操作，只看到前面时间步的部分，实现自回归
+   - 相对于Encoder，加了一层交互层，也是 multi-head attention
+   - **mask操作**，只看到前面时间步的部分，实现自回归
 
-- Scaled Dot-Product Attention：
-   - 和additional attention比较，两者理论上复杂度相似，但是实际应用中sdpa更快，节省空间，因为是框架处理过的矩阵乘法
-   - scaled原因是点积的数量级（方差）太大的时候，softmax梯度太小
+- **Scaled Dot-Product Attention**：
 
-- multi-head：
-   - 多头分别得到结果，有不同侧重点，最后concat一起并过一个linear
+   - 和additional attention比较，两者理论上**复杂度相似**，但是实际应用中sdpa更**快**，**节省空间**，因为是优化过的矩阵乘法
+   - scaled原因是点积的**数量级（方差）太大**的时候，softmax**梯度太小**
+
+- **multi-head**：
+
+   - 多头分别得到结果，**有不同侧重点**，最后concat一起并过一个linear
    - 因为输出512维，用8个头的话 q 和 k 的维度都是512 / 8  = 64
 
-- 交互层：
+- **交互层**：
+
    - Q来自decoder的上一个子层
    - K 和 V 来自encoder的输出
-   - 因此，Q查询了输入序列的所有位置
+   - 因此，**Q查询了输入序列的所有位置**
 
-- Encoder可以使每个位置都被每个位置关注，Decoder也是，不过是mask的基础上
+- Encoder可以使**每个token都被每个token关注**，Decoder也是，不过是mask的基础上
 
 - position-wise FC：
-   - 两层FC，可以表示为 512 -> 2048 + ReLU -> 512
+
+   - **两层FC**，可以表示为 512 -> 2048 + ReLU -> 512
 
 - 两个embedding层和pre-softmax-linear层的权重共享
 
 - positional encoding：
-  - 因为没有递归和卷积，所以要加入序列信息
-  - 直接相加 encoding 和 embedding ，可以解释为不同频率的信息叠加
+
+   - 因为没有递归和卷积，所以要加入序列信息
+   - 直接相加 encoding 和 embedding ，可以解释为**不同频率的信息叠加**
 
 - 自注意力的原因：
-  - 减小每层的总计算复杂度
 
-  - 增加可并行化计算量
+   - 减小每层的总计算**复杂度**
 
-  - 去除长程依赖问题带来的影响
+   - 增加可**并行化**计算量
 
-    
+   - 去除**长程依赖问题**带来的影响
+
+
 
 #### **个人理解**
 
@@ -192,10 +200,10 @@ Kim, Wonjae, Bokyung Son, and Ildoo Kim. "Vilt: Vision-and-language transformer 
 
 Vinyals, Oriol, et al. "Show and tell: A neural image caption generator." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2015. [[pdf](https://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Vinyals_Show_and_Tell_2015_CVPR_paper.pdf)]
 
-1. 用预训练CNN, Inceptionv3
-2. LSTM输入只有第一个cell接受了图像编码；`word embedding`和`hiddensize`都是512d；SGD
-3. BeamSearch
-4. BLEU
+- 用预训练CNN, Inceptionv3
+- LSTM输入只有第一个cell接受了图像编码；`word embedding`和`hiddensize`都是512d；SGD
+- BeamSearch
+- BLEU
 
 ```
 总结：
@@ -212,14 +220,14 @@ Xu, Kelvin, et al. "Show, attend and tell: Neural image caption generation with 
 
 [[PyTorch实现](https://github.com/CAOANJIA/image-caption)]
 
-1. VGG19
-2. LSTM输入每一个cell都考虑了zt，即attend之后的图像编码，zt的计算也要用到ht-1
-3. hard: REINFORCE; soft: SGD
-4. soft是对于一个`14*14*512`的feature map，每个像素可以表示为一个512维的向量`aL`，考虑到感受野，其实每个像素都代表了一个区域，
+- VGG19
+- LSTM输入每一个cell都考虑了zt，即attend之后的图像编码，zt的计算也要用到ht-1
+- hard: REINFORCE; soft: SGD
+- soft是对于一个`14*14*512`的feature map，每个像素可以表示为一个512维的向量`aL`，考虑到感受野，其实每个像素都代表了一个区域，
    然后为每个像素(196个)一个512维的权值alphaL(用ht-1和aL计算)，相对于对每个像素都有权重，相乘就得到zt，这就是spatial attention
-5. Flickr8k: official split; 	Flickr30k, MSCOCO: Karpathy splits; 
-6. `batchsize 64`, 每次选相同长度的	`Adam`	避免过拟合：`Dropout`	*early stopping*
-7. BLEU, METEOR
+- Flickr8k: official split; 	Flickr30k, MSCOCO: Karpathy splits; 
+- `batchsize 64`, 每次选相同长度的	`Adam`	避免过拟合：`Dropout`	*early stopping*
+- BLEU, METEOR
 
 
 ```
@@ -236,15 +244,15 @@ trick--每次选相同长度的作为一个batch，加快训练速度;
 
 Chen, Long, et al. "Sca-cnn: Spatial and channel-wise attention in convolutional networks for image captioning." *Proceedings of the IEEE conference on computer vision and pattern recognition*. 2017. [[pdf](https://openaccess.thecvf.com/content_cvpr_2017/papers/Chen_SCA-CNN_Spatial_and_CVPR_2017_paper.pdf)]
 
-1. CNN: `VGG19`/ `Res-152`	`LSTM`: word-embedding 100d, hidden-state 1000d	Attention Space: 512d both	
-2. `spatial` + `channel-wise` + `multi-layer`，多层迭代，层内是先channel再spatial
-3. channel-wise相当于选择语义的过程，因为可以说每个filter(channel)对应了一种模式
-3. channel-wise：先看作[u1, ..., uC]共C个向量，每个向量都是`H*W`维的，然后可以*meanpool*，得到[v1, ..., vC]，共C个标量，因为只需要考虑平均值就可以衡量这个channel对应的模式存在的可能性
+- CNN: `VGG19`/ `Res-152`	`LSTM`: word-embedding 100d, hidden-state 1000d	Attention Space: 512d both	
+- `spatial` + `channel-wise` + `multi-layer`，多层迭代，层内是先channel再spatial
+- channel-wise相当于选择**语义**的过程，因为可以说**每个filter(channel)对应了一种模式**
+- channel-wise：先看作[u1, ..., uC]共C个向量，每个向量都是`H*W`维的，然后可以*meanpool*，得到[v1, ..., vC]，共C个标量，因为只需要考虑平均值就可以衡量这个channel对应的模式存在的可能性
        spatial：[v1, ..., vm]共m个向量，m=H*W，每个向量都是C维的
-5. attend之后继续接入后续的层，得到最终表示。结果表明：VGG只用spatial比较好（有FC，保留了空间信息），Res则是C-S好（meanpool，丢失了空间信息）C效果好的原因应该是channel多（2048），
-6. Flickr8k: official split; 	Flickr30k, MSCOCO: Karpathy splits;
-7. `batchsize 16，64，64`	`Adadelta`	BeamSearch-5结合长度归一化(testing时)	避免过拟合：`Dropout`	*early stopping*
-8. BLEU, METEOR, CIDEr, ROUGE-L
+- attend之后继续接入后续的层，得到最终表示。结果表明：VGG只用spatial比较好（有FC，保留了空间信息），Res则是C-S好（meanpool，丢失了空间信息）C效果好的原因应该是channel多（2048），
+- Flickr8k: official split; 	Flickr30k, MSCOCO: Karpathy splits;
+- `batchsize 16，64，64`	`Adadelta`	BeamSearch-5结合长度归一化(testing时)	避免过拟合：`Dropout`	*early stopping*
+- BLEU, METEOR, CIDEr, ROUGE-L
 
 ```
 总结：
@@ -262,7 +270,7 @@ Cornia, Marcella, et al. "Meshed-memory transformer for image captioning." *Proc
 
 1. `multi-layer encoder`  +  `multi-layer decoder`, 每个layer内部是类transformer结构（multihead-self-attention + addnorm），但是加上了先验记忆向量
 2. mesh结构，并且每条边都有权重
-3. decoder是`masked self attention`
+3. decoder是 **masked self attention**
 4. region-based-Encoder: `Faster-RCNN` + `ResNet-101(pretrained on Visual Genome)` 每个区域都对应一个2048维的向量 
 5. Decoder: `one-hot vector linearly projection` + `sin positional embedding`
 6. COCO上：`d=512`，`head=8`，`memory vector=40`，`dropout=0.1`，`Adam`（pretrain时用warmup，finetuneCIDEr时5*10-6），`batchsize=50`，beamsize=5
@@ -275,31 +283,31 @@ Cornia, Marcella, et al. "Meshed-memory transformer for image captioning." *Proc
 
 Mokady, Ron, Amir Hertz, and Amit H. Bermano. "Clipcap: Clip prefix for image captioning." *arXiv preprint arXiv:2111.09734* (2021). [[pdf](https://arxiv.org/pdf/2111.09734.pdf)]
 
-1. `CLIP` + `Mapping Network` + `GPT2`（轻量级）
+- `CLIP` + `Mapping Network` + `GPT2`（轻量级）
 
    以前两者的输出作为语言模型的`prefix`，然后自回归获得caption
 
-2. 可以只训练Mapping Network：那么需要能力更强的`transformer`
+- 可以只训练Mapping Network：那么需要能力更强的`transformer`
 
    也可以训练MN+LM：只需要`MLP`，甚至一层都可以
 
-3. 在*COCO*上~~不SOTA~~
+- 在*COCO*上~~不SOTA~~
 
    在更有挑战的*nocap*、*Conceptual Captions*数据集上<u>SOTA</u>
 
    *nocap*只有验证、测试集，训练集是直接用*COCO*，其有三大部分...
 
-4. **KEY: Mapping Network**，其输入为`CLIP encoding`和一个`constant input`，constant input可以：
+- **KEY: Mapping Network**，其输入为`CLIP encoding`和一个`constant input`，constant input可以：
 
    - 获得多头注意力的信息
 
    - 调整模型，使其适应frozen的语言模型
 
-5. baseline对比：`VLP`、`Oscar` （Oscar还用了额外的监督：对象标签）
+- baseline对比：`VLP`、`Oscar` （Oscar还用了额外的监督：对象标签）
 
    MLP+GPT2总体上都不如transformer，只有在Conceptual Captions上较好，可能是因为微调使其更具风格多样性，但微调容易过拟合
 
-6. 训练时间短，说明lightweight，下面是COCO上的
+- 训练时间短，说明lightweight，下面是COCO上的
 
    - [ ] VLP: V100----------------48h
 
